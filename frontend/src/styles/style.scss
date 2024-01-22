@@ -1,0 +1,35 @@
+@import "./utils/variables";
+// @import "./layout/header";
+// @import "./layout/banner";
+// @import "./layout/card";
+// @import "./layout/home";
+// @import "./layout/housing";
+// @import "./layout/about";
+// @import "./layout/error";
+// @import "./layout/footer";
+// @import "./components/tag";
+// @import "./components/collapsible";
+// @import "./components/carousel";
+// @import "./components/stars";
+// @import "./components/spinerloader";
+
+// MAIN ELEMENTS
+* {
+  box-sizing: border-box;
+}
+* a {
+  text-decoration: none;
+  color: $red;
+}
+body {
+  font-family: $main-font;
+  margin: auto;
+  color: $red;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 100vh;
+}
