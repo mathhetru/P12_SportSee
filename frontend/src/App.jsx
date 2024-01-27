@@ -1,18 +1,22 @@
-import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Loader from "./components/Loader";
+import HorizontalNav from "./components/HorizontalNav";
+import VerticalNav from "./components/VerticalNav";
+import HomeView from "./pages/HomeView";
+import ErrorView from "./pages/ErrorView";
 import "./styles/style.scss";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-    </>
+    <Router>
+      <Loader />
+      <HorizontalNav />
+      <VerticalNav />
+      <Routes>
+        <Route path="/" element={<HomeView />} />
+        <Route path="*" element={<ErrorView />} />
+      </Routes>
+    </Router>
   );
 }
 
