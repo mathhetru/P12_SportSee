@@ -1,46 +1,27 @@
 .error {
-  max-width: 1240px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  &__title {
-    margin: 5rem 0;
-    font-size: $size-desk-404;
-    font-weight: $weight-bold;
-  }
-  &__text {
-    margin: 0;
-    font-size: $size-desk-title;
-    text-align: center;
-    font-weight: $weight-normal;
-  }
-  &__link {
-    margin: 8rem 0;
-    font-size: $size-desk-text;
-    font-weight: $weight-normal;
-  }
-  &__link:hover {
-    text-decoration: underline;
-    transition: 0.2s linear;
-  }
-}
-
-// BREAKPOINT PHONE ERROR
-@media screen and (max-width: 1024px) {
-  .error {
-    max-width: 90%;
-    &__title {
-      margin: 5rem 0;
-      font-size: $size-phone-404;
-    }
-    &__text {
-      margin: 0;
-      font-size: $size-phone-title;
-    }
-    &__link {
-      margin: 8rem 0;
-      font-size: $size-phone-subtitle;
-    }
-  }
+  // max-width: 1240px;
+  // margin: auto;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // &__title {
+  //   margin: 5rem 0;
+  //   font-size: $size-desk-404;
+  //   font-weight: $weight-bold;
+  // }
+  // &__text {
+  //   margin: 0;
+  //   font-size: $size-desk-title;
+  //   text-align: center;
+  //   font-weight: $weight-normal;
+  // }
+  // &__link {
+  //   margin: 8rem 0;
+  //   font-size: $size-desk-text;
+  //   font-weight: $weight-normal;
+  // }
+  // &__link:hover {
+  //   text-decoration: underline;
+  //   transition: 0.2s linear;
+  // }
 }

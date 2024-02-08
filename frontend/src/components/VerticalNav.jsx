@@ -37,7 +37,7 @@ function VerticalNav() {
           />
         </Link>
       </div>
-      <p>Copyright, SportSee 2024</p>
+      <p className="vertical-nav__text">Copyright, SportSee 2024</p>
     </div>
   );
 }

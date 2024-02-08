@@ -4,4 +4,18 @@
   width: 117px;
   flex-direction: column;
   background-color: $black;
+  &-container {
+    display: flex;
+    height: 80%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+  &__text {
+    transform: rotate(-90deg);
+    white-space: nowrap;
+    color: $white;
+    font-size: $size-copyright;
+  }
 }

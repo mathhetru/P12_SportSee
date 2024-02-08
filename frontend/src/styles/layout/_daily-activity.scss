@@ -1,0 +1,18 @@
+.daily-activity {
+  background-color: $light-grey;
+  padding: 2rem;
+  width: 835px;
+  height: 320px;
+}
+
+.tooltip {
+  &-container {
+    background-color: $red;
+    color: $white;
+    padding: 0.5rem;
+  }
+  &-text {
+    font-size: 10px;
+    font-family: $main-font;
+  }
+}
