@@ -12,7 +12,7 @@ import {
   Legend,
 } from "recharts";
 
-function HorizontalNav() {
+function DailyActivity() {
   const { id } = useParams();
   const activitiesData = getUserActivities(id);
 
@@ -90,4 +90,4 @@ function HorizontalNav() {
   );
 }
 
-export default HorizontalNav;
+export default DailyActivity;

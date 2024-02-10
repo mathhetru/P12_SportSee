@@ -1,25 +1,24 @@
 import { getUserData, getUserSessions } from "../services/mockDataServices.js";
 import { useParams, Navigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import HorizontalNav from "../components/HorizontalNav";
 import VerticalNav from "../components/VerticalNav";
 import DailyActivity from "../components/DailyActivity";
+import AverageSessionsDuration from "../components/AverageSessionsDuration";
 import lodash from "lodash";
 
 function Home() {
   const { id } = useParams();
-  const userData = getUserData(id);
-
+  const [userData, setUserData] = useState();
   const averageSessionsData = getUserSessions(id);
-  console.log(userData);
 
-  // useEffect(() => {
-  //     const userData = await getUserData(id); // Fetching user activity data
-  //     if (userData && userData.data && userData.data.sessions) {
-  //       setUserActivity(userData.data.sessions); // Setting user activity data in state
-  //     }
-  //   };
-  // }, [userId]);
+  useEffect(() => {
+    const toto = async () => {
+      const userDataResults = await getUserData(id);
+      setUserData(userDataResults);
+    };
+    toto();
+  }, []);
 
   useEffect(() => {
     if (userData) {
@@ -27,9 +26,9 @@ function Home() {
     }
   }, [userData]);
 
-  if (!userData) {
-    return <Navigate to="/page-not-found" />;
-  }
+  // if (!userData) {
+  //   return <Navigate to="/page-not-found" />;
+  // }
 
   const userHasDoneSport = () => {
     const sportQuantity = averageSessionsData.sessions.map(
@@ -60,12 +59,13 @@ function Home() {
           <h1 className="dashboard-title">
             Bonjour{" "}
             <span className="dashboard-title name">
-              {userData.userInfos.firstName}
+              {userData && userData.userInfos.firstName}
             </span>
           </h1>
           {userHasDoneSport()}
           <div className="dashboard-container">
             <DailyActivity />
+            <AverageSessionsDuration />
           </div>
         </div>
       </div>
