@@ -76,9 +76,16 @@ function Home() {
           {sessionsData && userHasDoneSport()}
           <div className="dashboard-container">
             {infosData && (
-              <DailyActivity user={infosData} activities={activitiesData} />
+              <DailyActivity
+                user={infosData}
+                activities={activitiesData.sessions}
+              />
             )}
-            <AverageSessionsDuration />
+            <div className="dashboard-bottom-container">
+              {sessionsData && (
+                <AverageSessionsDuration sessions={sessionsData.sessions} />
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@
 }
 
 .dashboard {
-  padding: 4rem 7rem;
+  padding: 4rem 4.5rem;
   &-title {
     font-size: $size-title;
     font-weight: $weight-bold;
@@ -20,6 +20,11 @@
   }
   &-container {
     margin-top: 4rem;
+  }
+  &-bottom-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
   }
 }
 

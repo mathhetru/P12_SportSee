@@ -12,13 +12,11 @@ import {
 
 function DailyActivity(props) {
   const activitiesForBarChart = () => {
-    const activitiesToDisplay = props.activities.sessions.map(
-      (activity, index) => ({
-        day: index + 1,
-        kilogram: activity.kilogram,
-        calories: activity.calories,
-      })
-    );
+    const activitiesToDisplay = props.activities.map((activity, index) => ({
+      day: index + 1,
+      kilogram: activity.kilogram,
+      calories: activity.calories,
+    }));
     const activitiesSort = activitiesToDisplay.sort(
       (a, b) => a.index - b.index
     );
