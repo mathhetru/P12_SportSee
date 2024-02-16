@@ -1,6 +1,6 @@
 import mockData from "./mockData.json";
 
-export const getUserData = async (userId) => {
+export const getUserInfos = async (userId) => {
   // ? async await ?
   if (mockData[userId] && userId == mockData[userId].userInfo.id) {
     return mockData[userId].userInfo;
@@ -12,7 +12,7 @@ export const getUserData = async (userId) => {
 export const getUserActivities = (userId) => {
   if (
     mockData[userId].userActivity &&
-    userId == mockData[userId].averageSessions.userId
+    userId == mockData[userId].userActivity.userId
   ) {
     return mockData[userId].userActivity;
   } else {

@@ -1,4 +1,9 @@
-import { getUserData, getUserSessions } from "../services/mockDataServices.js";
+import {
+  getUserInfos,
+  getUserActivities,
+  getUserSessions,
+} from "../services/mockDataServices.js";
+import PropTypes from "prop-types";
 import { useParams, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import HorizontalNav from "../components/HorizontalNav";
@@ -9,29 +14,34 @@ import lodash from "lodash";
 
 function Home() {
   const { id } = useParams();
-  const [userData, setUserData] = useState();
-  const averageSessionsData = getUserSessions(id);
+  const [infosData, setInfosUserData] = useState(null);
+  const [activitiesData, setActivitiesData] = useState(null);
+  const [sessionsData, setSessionsData] = useState(null);
 
   useEffect(() => {
-    const toto = async () => {
-      const userDataResults = await getUserData(id);
-      setUserData(userDataResults);
+    const fetchData = async () => {
+      const userData = await getUserInfos(id);
+      const userActivitiesData = await getUserActivities(id);
+      const userSessionsData = await getUserSessions(id);
+      setInfosUserData(userData);
+      setActivitiesData(userActivitiesData);
+      setSessionsData(userSessionsData);
     };
-    toto();
-  }, []);
+    fetchData();
+  }, [id]);
 
   useEffect(() => {
-    if (userData) {
-      document.title = `${userData.userInfos.firstName} ${userData.userInfos.lastName}`;
+    if (infosData) {
+      document.title = `${infosData.userInfos.firstName} ${infosData.userInfos.lastName}`;
     }
-  }, [userData]);
+  }, [infosData]);
 
-  // if (!userData) {
+  // if (!infosData) {
   //   return <Navigate to="/page-not-found" />;
   // }
 
   const userHasDoneSport = () => {
-    const sportQuantity = averageSessionsData.sessions.map(
+    const sportQuantity = sessionsData.sessions.map(
       (session) => session.sessionLength
     );
     const sum = lodash.sum(sportQuantity);
@@ -59,12 +69,15 @@ function Home() {
           <h1 className="dashboard-title">
             Bonjour{" "}
             <span className="dashboard-title name">
-              {userData && userData.userInfos.firstName}
+              {/* {infosData ? infosData.userInfos.firstName : null} */}
+              {infosData && infosData.userInfos.firstName}
             </span>
           </h1>
-          {userHasDoneSport()}
+          {sessionsData && userHasDoneSport()}
           <div className="dashboard-container">
-            <DailyActivity />
+            {infosData && (
+              <DailyActivity user={infosData} activities={activitiesData} />
+            )}
             <AverageSessionsDuration />
           </div>
         </div>
@@ -72,5 +85,9 @@ function Home() {
     </div>
   );
 }
+
+Home.propTypes = {
+  id: PropTypes.string,
+};
 
 export default Home;

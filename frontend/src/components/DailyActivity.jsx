@@ -1,6 +1,4 @@
-import { getUserActivities } from "../services/mockDataServices.js";
 import PropTypes from "prop-types";
-import { useParams } from "react-router-dom";
 import {
   BarChart,
   Bar,
@@ -12,12 +10,9 @@ import {
   Legend,
 } from "recharts";
 
-function DailyActivity() {
-  const { id } = useParams();
-  const activitiesData = getUserActivities(id);
-
+function DailyActivity(props) {
   const activitiesForBarChart = () => {
-    const activitiesToDisplay = activitiesData.sessions.map(
+    const activitiesToDisplay = props.activities.sessions.map(
       (activity, index) => ({
         day: index + 1,
         kilogram: activity.kilogram,
@@ -29,6 +24,20 @@ function DailyActivity() {
     );
     return activitiesSort;
   };
+
+  const kilograms = () => {
+    return activitiesForBarChart().map((item) => item.kilogram);
+  };
+
+  const minKg = Math.min(...kilograms()) - 1;
+  const maxKg = Math.max(...kilograms()) + 1;
+
+  const averageTicks = (min, max) => {
+    const mid = (min + max) / 2;
+    return [min, mid, max];
+  };
+
+  const yAxisTicks = averageTicks(minKg, maxKg);
 
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
@@ -57,20 +66,32 @@ function DailyActivity() {
         height="80%"
         style={{ margin: "0 auto" }}
       >
-        <p>Activité quotidienne</p>
+        <p className="daily-activity__text">Activité quotidienne</p>
         <BarChart width={400} height={400} data={activitiesForBarChart()}>
-          <CartesianGrid strokeDasharray="2 2" />
-          <Tooltip content={<CustomTooltip />} />
           <Legend
             iconType="circle"
             verticalAlign="top"
             align="right"
             iconSize={8}
-            style={{ marginRight: "10px" }}
           />
-          <XAxis dataKey="day" />
-          <YAxis dataKey="kilogram" orientation="right" />
+          <CartesianGrid
+            vertical={false}
+            stroke="#dedede"
+            strokeDasharray="2 2"
+          />
+          <XAxis dataKey="day" tickLine={false} />
+          <YAxis yAxisId="left" orientation="left" hide={true} tickCount={3} />
+          <YAxis
+            yAxisId="right"
+            orientation="right"
+            stroke="#282D30"
+            domain={[minKg, maxKg]}
+            ticks={yAxisTicks}
+            tickLine={false}
+          />
+          <Tooltip content={<CustomTooltip />} />
           <Bar
+            yAxisId="right"
             dataKey="kilogram"
             fill="#282D30"
             name="Poids (kg)"
@@ -78,6 +99,7 @@ function DailyActivity() {
             barSize={7}
           />
           <Bar
+            yAxisId="left"
             dataKey="calories"
             fill="#E60000"
             name="Calories brûlées (kCal)"
@@ -89,5 +111,10 @@ function DailyActivity() {
     </div>
   );
 }
+
+DailyActivity.propTypes = {
+  user: PropTypes.object.isRequired,
+  activities: PropTypes.object.isRequired,
+};
 
 export default DailyActivity;
