@@ -2,6 +2,7 @@ import {
   getUserInfos,
   getUserActivities,
   getUserSessions,
+  getUserPerformance,
 } from "../services/mockDataServices.js";
 import PropTypes from "prop-types";
 import { useParams, Navigate } from "react-router-dom";
@@ -9,6 +10,7 @@ import { useEffect, useState } from "react";
 import HorizontalNav from "../components/HorizontalNav";
 import VerticalNav from "../components/VerticalNav";
 import DailyActivity from "../components/DailyActivity";
+import RadarPerformance from "../components/RadarPerformance";
 import AverageSessionsDuration from "../components/AverageSessionsDuration";
 import lodash from "lodash";
 
@@ -17,15 +19,37 @@ function Home() {
   const [infosData, setInfosUserData] = useState(null);
   const [activitiesData, setActivitiesData] = useState(null);
   const [sessionsData, setSessionsData] = useState(null);
+  const [perfomanceData, setPerformanceData] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const userData = await getUserInfos(id);
-      const userActivitiesData = await getUserActivities(id);
-      const userSessionsData = await getUserSessions(id);
-      setInfosUserData(userData);
-      setActivitiesData(userActivitiesData);
-      setSessionsData(userSessionsData);
+    const fetchData = () => {
+      const userData = getUserInfos(id);
+      const userActivitiesData = getUserActivities(id);
+      const userSessionsData = getUserSessions(id);
+      const userPerformanceData = getUserPerformance(id);
+
+      Promise.all([
+        userData,
+        userActivitiesData,
+        userSessionsData,
+        userPerformanceData,
+      ])
+        .then(
+          ([
+            resultUserData,
+            resultActivitiesData,
+            resultSessionData,
+            resultPerformanceData,
+          ]) => {
+            setInfosUserData(resultUserData);
+            setActivitiesData(resultActivitiesData);
+            setSessionsData(resultSessionData);
+            setPerformanceData(resultPerformanceData);
+          }
+        )
+        .catch((error) => {
+          console.error(error.message);
+        });
     };
     fetchData();
   }, [id]);
@@ -84,6 +108,12 @@ function Home() {
             <div className="dashboard-bottom-container">
               {sessionsData && (
                 <AverageSessionsDuration sessions={sessionsData.sessions} />
+              )}
+              {perfomanceData && (
+                <RadarPerformance
+                  kinds={perfomanceData.kind}
+                  data={perfomanceData.data}
+                />
               )}
             </div>
           </div>

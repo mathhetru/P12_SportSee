@@ -111,8 +111,7 @@ function DailyActivity(props) {
 }
 
 DailyActivity.propTypes = {
-  user: PropTypes.object.isRequired,
-  activities: PropTypes.object.isRequired,
+  activities: PropTypes.array.isRequired,
 };
 
 export default DailyActivity;

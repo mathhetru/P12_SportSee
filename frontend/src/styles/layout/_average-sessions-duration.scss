@@ -4,45 +4,27 @@
   width: 245px;
   height: 263px;
   border-radius: 5px;
-  // &__text {
-  //   color: $dark-grey;
-  //   font-size: 15px;
-  //   font-weight: $weight-bold;
-  //   font-family: $main-font;
-  //   margin-bottom: 1rem;
-  // }
+  &__text {
+    color: $white;
+    opacity: 0.5;
+    position: absolute;
+    font-size: 15px;
+    font-weight: $weight-bold;
+    font-family: $main-font;
+    margin-top: 1.5rem;
+    line-height: 1.5rem;
+    margin-left: 2rem;
+  }
 }
 
-// .daily-activity {
-//   .recharts-legend-wrapper {
-//     top: -33px !important;
-//   }
-//   .recharts-legend-item {
-//     margin-right: 30px !important;
-//   }
-//   .recharts-legend-item-text {
-//     font-size: 14px;
-//     color: $legend !important;
-//     font-weight: $weight-bold;
-//   }
-//   .recharts-default-legend .recharts-legend-item svg {
-//     margin-right: 10px !important;
-//   }
-//   .recharts-text {
-//     font-size: 14px;
-//     font-weight: $weight-bold;
-//     fill: rgb(116, 121, 140);
-//   }
-// }
-
-// .tooltip {
-//   &-container {
-//     background-color: $red;
-//     color: $white;
-//     padding: 0.5rem;
-//   }
-//   &-text {
-//     font-size: 10px;
-//     font-family: $main-font;
-//   }
-// }
+.tooltip {
+  &2-container {
+    background-color: $white;
+    color: $black;
+    padding: 0.125rem 0.5rem;
+  }
+  &2-text {
+    font-size: 10px;
+    font-family: $main-font;
+  }
+}
