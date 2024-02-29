@@ -1,0 +1,41 @@
+.score {
+  background-color: $light-grey;
+  width: 245px;
+  height: 263px;
+  border-radius: 5px;
+  position: relative;
+  &__title {
+    position: absolute;
+    color: $dark-grey;
+    font-size: 15px;
+    font-weight: $weight-bold;
+    font-family: $main-font;
+    margin-top: 1.5rem;
+    margin-left: 2rem;
+  }
+  &-text {
+    z-index: 2;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 38%;
+    top: 35%;
+    &__percentage {
+      color: $dark-grey;
+      font-size: 26px;
+      margin: 0;
+      font-weight: $weight-bold;
+      font-family: $main-font;
+    }
+    &__objectif {
+      color: $legend;
+      font-size: 15px;
+      margin: 0;
+      font-weight: $weight-bold;
+      font-family: $main-font;
+      line-height: 1.4rem;
+      text-align: center;
+    }
+  }
+}

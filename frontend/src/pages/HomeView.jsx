@@ -12,6 +12,8 @@ import VerticalNav from "../components/VerticalNav";
 import DailyActivity from "../components/DailyActivity";
 import RadarPerformance from "../components/RadarPerformance";
 import AverageSessionsDuration from "../components/AverageSessionsDuration";
+import CardRight from "../components/CardRight";
+import Score from "../components/Score";
 import lodash from "lodash";
 
 function Home() {
@@ -83,6 +85,17 @@ function Home() {
       );
     }
   };
+  
+  if (infosData) {
+    const arrayKeyData = () => {
+      return infosData.keyData.map((data, index) => ({
+        day: index + 1,
+        kilogram: data.kilogram,
+        calories: data.calories,
+      }));
+    };
+    console.log(infosData.keyData);
+  }
 
   return (
     <div className="home">
@@ -115,7 +128,14 @@ function Home() {
                   data={perfomanceData.data}
                 />
               )}
+              {infosData && <Score score={infosData.todayScore} />}
             </div>
+          </div>
+          <div className="dashboard-right-container">
+            {/* {infosData &&
+              infosData.keyData.map((data) => (
+                <CardRight keyData={data} key={data} />
+              ))} */}
           </div>
         </div>
       </div>

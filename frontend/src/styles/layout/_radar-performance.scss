@@ -1,6 +1,12 @@
 .radar-performance {
-  background-color: $black;
+  background-color: $dark-grey;
   width: 245px;
   height: 263px;
   border-radius: 5px;
+  .recharts-text {
+    transform: scaleY(1.08) translateY(-6px);
+    font-size: 12px;
+    font-weight: $weight-bold;
+    fill: $white;
+  }
 }
