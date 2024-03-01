@@ -8,6 +8,13 @@
 
 .dashboard {
   padding: 4rem 4.5rem;
+  width: 100%;
+  &-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 4rem;
+    gap: 2rem;
+  }
   &-title {
     font-size: $size-title;
     font-weight: $weight-bold;
@@ -17,9 +24,6 @@
   &__text {
     font-size: $size-subtitle;
     color: $black;
-  }
-  &-container {
-    margin-top: 4rem;
   }
   &-bottom-container {
     display: flex;

@@ -7,15 +7,15 @@ import {
 import PropTypes from "prop-types";
 import { useParams, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+
 import HorizontalNav from "../components/HorizontalNav";
 import VerticalNav from "../components/VerticalNav";
+import DashboardTitle from "../components/DashboardTitle.jsx";
 import DailyActivity from "../components/DailyActivity";
 import RadarPerformance from "../components/RadarPerformance";
 import AverageSessionsDuration from "../components/AverageSessionsDuration";
-import CardRight from "../components/CardRight";
+import CardsOnRight from "../components/CardsOnRight.jsx";
 import Score from "../components/Score";
-import lodash from "lodash";
-
 function Home() {
   const { id } = useParams();
   const [infosData, setInfosUserData] = useState(null);
@@ -66,76 +66,36 @@ function Home() {
   //   return <Navigate to="/page-not-found" />;
   // }
 
-  const userHasDoneSport = () => {
-    const sportQuantity = sessionsData.sessions.map(
-      (session) => session.sessionLength
-    );
-    const sum = lodash.sum(sportQuantity);
-    if (sum > 175) {
-      return (
-        <p className="dashboard__text">
-          Félicitations ! Vous avez explosé vos objectifs hier 👏
-        </p>
-      );
-    } else {
-      return (
-        <p className="dashboard__text">
-          Courage ! Vous ferez mieux la semaine prochaine ! 💪
-        </p>
-      );
-    }
-  };
-  
-  if (infosData) {
-    const arrayKeyData = () => {
-      return infosData.keyData.map((data, index) => ({
-        day: index + 1,
-        kilogram: data.kilogram,
-        calories: data.calories,
-      }));
-    };
-    console.log(infosData.keyData);
-  }
-
   return (
     <div className="home">
       <HorizontalNav />
       <div className="home-container">
         <VerticalNav />
         <div className="dashboard">
-          <h1 className="dashboard-title">
-            Bonjour{" "}
-            <span className="dashboard-title name">
-              {/* {infosData ? infosData.userInfos.firstName : null} */}
-              {infosData && infosData.userInfos.firstName}
-            </span>
-          </h1>
-          {sessionsData && userHasDoneSport()}
+          {infosData && (
+            <DashboardTitle user={infosData} sessions={sessionsData.sessions} />
+          )}
           <div className="dashboard-container">
-            {infosData && (
-              <DailyActivity
-                user={infosData}
-                activities={activitiesData.sessions}
-              />
-            )}
-            <div className="dashboard-bottom-container">
-              {sessionsData && (
-                <AverageSessionsDuration sessions={sessionsData.sessions} />
+            <div className="dashboard-left-container">
+              {infosData && (
+                <DailyActivity activities={activitiesData.sessions} />
               )}
-              {perfomanceData && (
-                <RadarPerformance
-                  kinds={perfomanceData.kind}
-                  data={perfomanceData.data}
-                />
-              )}
-              {infosData && <Score score={infosData.todayScore} />}
+              <div className="dashboard-bottom-container">
+                {sessionsData && (
+                  <AverageSessionsDuration sessions={sessionsData.sessions} />
+                )}
+                {perfomanceData && (
+                  <RadarPerformance
+                    kinds={perfomanceData.kind}
+                    data={perfomanceData.data}
+                  />
+                )}
+                {infosData && <Score score={infosData.todayScore} />}
+              </div>
             </div>
-          </div>
-          <div className="dashboard-right-container">
-            {/* {infosData &&
-              infosData.keyData.map((data) => (
-                <CardRight keyData={data} key={data} />
-              ))} */}
+            <div className="dashboard-right-container">
+              {infosData && <CardsOnRight keyData={infosData.keyData} />}
+            </div>
           </div>
         </div>
       </div>

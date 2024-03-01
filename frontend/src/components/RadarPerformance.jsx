@@ -8,19 +8,19 @@ import {
 } from "recharts";
 
 function RadarPerformance(props) {
-  const translateValues = (value) => {
-    if (value === "1") return "Intensité";
-    if (value === "2") return "Vitesse";
-    if (value === "3") return "Force";
-    if (value === "4") return "Endurance";
-    if (value === "5") return "Énergie";
-    if (value === "6") return "Cardio";
+  const translateValues = {
+    1: "Intensité",
+    2: "Vitesse",
+    3: "Force",
+    4: "Endurance",
+    5: "Énergie",
+    6: "Cardio",
   };
 
   const performanceNames = () =>
     props.data.map((data) => ({
       value: data.value,
-      kind: translateValues(data.kind.toString()),
+      kind: translateValues[data.kind],
     }));
 
   return (
