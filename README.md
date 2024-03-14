@@ -49,7 +49,7 @@ Install dependencies
 
 If you have any trouble, check and update every package with `npm install -g npm-check-updates`.
 
-### Start the frontend
+## Start the frontend
 
 In an other terminal
 
