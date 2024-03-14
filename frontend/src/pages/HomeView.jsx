@@ -1,15 +1,15 @@
-// import {
-//   getUserInfos,
-//   getUserActivities,
-//   getUserSessions,
-//   getUserPerformance,
-// } from "../services/mockDataServices.js";
 import {
   getUserInfos,
   getUserActivities,
   getUserSessions,
   getUserPerformance,
-} from "../services/APIDataServices.js";
+} from "../services/mockDataServices.js";
+// import {
+//   getUserInfos,
+//   getUserActivities,
+//   getUserSessions,
+//   getUserPerformance,
+// } from "../services/APIDataServices.js";
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
