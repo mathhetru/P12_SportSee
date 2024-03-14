@@ -4,7 +4,7 @@ import lodash from "lodash";
 function DashboardTitle(props) {
   /**
    * @description This function is used to check if the user has done sport
-   * @returns 
+   * @returns
    */
   const userHasDoneSport = () => {
     const sportQuantity = props.sessions.map(
@@ -27,13 +27,15 @@ function DashboardTitle(props) {
   };
 
   return (
-    <h1 className="dashboard-title">
-      Bonjour{" "}
-      <span className="dashboard-title name">
-        {props.user.userInfos.firstName}
-      </span>
+    <div>
+      <h1 className="dashboard-title">
+        Bonjour{" "}
+        <span className="dashboard-title name">
+          {props.user.userInfos.firstName}
+        </span>
+      </h1>
       {userHasDoneSport()}
-    </h1>
+    </div>
   );
 }
 

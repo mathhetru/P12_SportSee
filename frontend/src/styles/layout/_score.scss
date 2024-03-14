@@ -40,3 +40,26 @@
     }
   }
 }
+
+@media (max-width: 1024px) {
+  .score {
+    height: 218px;
+    width: 30%;
+    &__title {
+      font-size: 12px;
+      margin-top: 1rem;
+      margin-left: 1.5rem;
+    }
+    &-text {
+      left: 34%;
+      top: 35%;
+      &__percentage {
+        font-size: 24px;
+      }
+      &__objectif {
+        font-size: 13px;
+        line-height: 1.2rem;
+      }
+    }
+  }
+}

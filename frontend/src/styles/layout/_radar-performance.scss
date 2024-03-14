@@ -6,8 +6,15 @@
   border-radius: 5px;
   .recharts-text {
     transform: scaleY(1.08) translateY(-6px);
-    font-size: 12px;
+    font-size: 10px;
     font-weight: $weight-bold;
     fill: $white;
+  }
+}
+
+@media (max-width: 1024px) {
+  .radar-performance {
+    height: 218px;
+    width: 40%;
   }
 }

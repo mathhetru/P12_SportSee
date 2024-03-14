@@ -46,3 +46,14 @@
     font-family: $main-font;
   }
 }
+
+@media (max-width: 1024px) {
+  .daily-activity {
+    &__text {
+      font-size: 12px;
+    }
+  }
+  .recharts-legend-item-text {
+    font-size: 12px !important;
+  }
+}

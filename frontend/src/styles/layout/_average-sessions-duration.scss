@@ -28,3 +28,15 @@
     font-family: $main-font;
   }
 }
+
+@media (max-width: 1024px) {
+  .average-sessions-duration {
+    height: 218px;
+    width: 25%;
+    &__text {
+      font-size: 12px;
+      margin-top: 1rem;
+      margin-left: 1.5rem;
+    }
+  }
+}

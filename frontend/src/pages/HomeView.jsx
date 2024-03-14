@@ -1,11 +1,17 @@
+// import {
+//   getUserInfos,
+//   getUserActivities,
+//   getUserSessions,
+//   getUserPerformance,
+// } from "../services/mockDataServices.js";
 import {
   getUserInfos,
   getUserActivities,
   getUserSessions,
   getUserPerformance,
-} from "../services/mockDataServices.js";
+} from "../services/APIDataServices.js";
 import PropTypes from "prop-types";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import HorizontalNav from "../components/HorizontalNav";
@@ -18,15 +24,15 @@ import CardsOnRight from "../components/CardsOnRight.jsx";
 import Score from "../components/Score";
 function Home() {
   const { id } = useParams();
-  const [infosData, setInfosUserData] = useState(null);
+  const [userInfosData, setInfosUserData] = useState(null);
   const [activitiesData, setActivitiesData] = useState(null);
   const [sessionsData, setSessionsData] = useState(null);
   const [perfomanceData, setPerformanceData] = useState(null);
 
   useEffect(() => {
     /**
-    * @description This function is used to fetch the data from the API
-    */
+     * @description This function is used to fetch the data from the API
+     */
     const fetchData = () => {
       const userData = getUserInfos(id);
       const userActivitiesData = getUserActivities(id);
@@ -60,14 +66,10 @@ function Home() {
   }, [id]);
 
   useEffect(() => {
-    if (infosData) {
-      document.title = `${infosData.userInfos.firstName} ${infosData.userInfos.lastName}`;
+    if (userInfosData) {
+      document.title = `${userInfosData.userInfos.firstName} ${userInfosData.userInfos.lastName}`;
     }
-  }, [infosData]);
-
-  // if (!infosData) {
-  //   return <Navigate to="/page-not-found" />;
-  // }
+  }, [userInfosData]);
 
   return (
     <div className="home">
@@ -75,12 +77,15 @@ function Home() {
       <div className="home-container">
         <VerticalNav />
         <div className="dashboard">
-          {infosData && (
-            <DashboardTitle user={infosData} sessions={sessionsData.sessions} />
+          {userInfosData && (
+            <DashboardTitle
+              user={userInfosData}
+              sessions={sessionsData.sessions}
+            />
           )}
           <div className="dashboard-container">
             <div className="dashboard-left-container">
-              {infosData && (
+              {userInfosData && (
                 <DailyActivity activities={activitiesData.sessions} />
               )}
               <div className="dashboard-bottom-container">
@@ -93,11 +98,17 @@ function Home() {
                     data={perfomanceData.data}
                   />
                 )}
-                {infosData && <Score score={infosData.todayScore} />}
+                {userInfosData && (
+                  <Score
+                    score={userInfosData.todayScore || userInfosData.score}
+                  />
+                )}
               </div>
             </div>
             <div className="dashboard-right-container">
-              {infosData && <CardsOnRight keyData={infosData.keyData} />}
+              {userInfosData && (
+                <CardsOnRight keyData={userInfosData.keyData} />
+              )}
             </div>
           </div>
         </div>
