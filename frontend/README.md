@@ -1,29 +1,33 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-
 # P12 SportSee
 
 > Le projet 12 de la formation Openclassrooms Développeur Front-end "Développez un tableau de bord d'analytics avec React"
 > 12th project of Front-end Web Developper training by OpenClassrooms "analytics dashboard with React"
 
-Powered with : 
+Powered with :
+
 - ReactJs
 - Vite
 
 To run this project, you will need:
+
 ```
 NodeJs
 npm
 ```
 
-### Clone and install
+### Netlify Link
+
+https://mathhetru-p12-sportsee.netlify.app/12
+
+### Figma Link
+
+https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR?type=design&node-id=0-1&mode=design&t=Co3hflW1BFdsU920-0
+
+### User Stories
+
+https://openclassrooms.notion.site/Tableau-de-bord-SportSee-6686aa4b5f44417881a4884c9af5669e
+
+### For run the project
 
 Clone the project
 
@@ -42,10 +46,10 @@ Install dependencies
 ```bash
   npm install
 ```
+
 If you have any trouble, check and update every package with `npm install -g npm-check-updates`.
 
-
-### Start the front
+### Start the frontend
 
 In an other terminal
 
@@ -53,9 +57,9 @@ In an other terminal
   cd ./frontend
   npm run dev
 ```
+
 You can go to http://127.0.0.1:5173 and enjoy !
 
-## Backend
+## Start the Backend
 
 https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard
-
