@@ -2,6 +2,10 @@ import PropTypes from "prop-types";
 import lodash from "lodash";
 
 function DashboardTitle(props) {
+  /**
+   * @description This function is used to check if the user has done sport
+   * @returns 
+   */
   const userHasDoneSport = () => {
     const sportQuantity = props.sessions.map(
       (session) => session.sessionLength

@@ -1,5 +1,10 @@
 import mockData from "./mockData.json";
 
+/**
+ * 
+ * @param {*} userId 
+ * @returns 
+ */
 export const getUserInfos = async (userId) => {
   if (mockData[userId] && userId == mockData[userId].userInfo.id) {
     return mockData[userId].userInfo;
@@ -8,6 +13,11 @@ export const getUserInfos = async (userId) => {
   }
 };
 
+/**
+ * 
+ * @param {*} userId 
+ * @returns 
+ */
 export const getUserActivities = (userId) => {
   if (
     mockData[userId].userActivity &&
@@ -19,6 +29,11 @@ export const getUserActivities = (userId) => {
   }
 };
 
+/**
+ * 
+ * @param {*} userId 
+ * @returns 
+ */
 export const getUserSessions = (userId) => {
   if (
     mockData[userId].averageSessions &&
@@ -30,6 +45,11 @@ export const getUserSessions = (userId) => {
   }
 };
 
+/**
+ * 
+ * @param {*} userId 
+ * @returns 
+ */
 export const getUserPerformance = (userId) => {
   if (
     mockData[userId].performance &&

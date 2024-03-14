@@ -24,6 +24,9 @@ function Home() {
   const [perfomanceData, setPerformanceData] = useState(null);
 
   useEffect(() => {
+    /**
+    * @description This function is used to fetch the data from the API
+    */
     const fetchData = () => {
       const userData = getUserInfos(id);
       const userActivitiesData = getUserActivities(id);

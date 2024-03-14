@@ -11,6 +11,10 @@ import {
 } from "recharts";
 
 function DailyActivity(props) {
+  /**
+   * @description This function is used to map the data from the API to the bar chart
+   * @returns 
+   */
   const activitiesForBarChart = () => {
     const activitiesToDisplay = props.activities.map((activity, index) => ({
       day: index + 1,
@@ -37,6 +41,11 @@ function DailyActivity(props) {
 
   const yAxisTicks = averageTicks(minKg, maxKg);
 
+  /**
+   * 
+   * @param {*} param0 
+   * @returns 
+   */
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (

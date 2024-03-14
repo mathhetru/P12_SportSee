@@ -1,8 +1,10 @@
 .home {
-  width: 100vw;
+  width: 100%;
+  height: 100%;
   &-container {
     display: flex;
     height: calc(100% - 91px);
+    width: 80%;
   }
 }
 
@@ -42,11 +44,16 @@
   color: $red;
 }
 
+@media (max-width: 1440px) {
+  .home-container {
+    width: 100%;
+  }
+}
+
 @media (max-width: 1024px) {
   .dashboard {
     padding: 3rem;
     &-container {
-      // grid-template-columns: 70% 30%;
       grid-template-columns: 1fr;
     }
   }

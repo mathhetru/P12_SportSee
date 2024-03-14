@@ -8,42 +8,48 @@ import iconLipides from "../assets/icons/sportsee-icon-lipides.svg";
 import iconProteines from "../assets/icons/sportsee-icon-proteines.svg";
 
 function CardsOnRight(props) {
-  const translateCounts = {
-    calorieCount: "Calories",
-    proteinCount: "Proteines",
-    carbohydrateCount: "Glucides",
-    lipidCount: "Lipides",
+  /**
+   * @description This function is used to translate the data from the API to the cards on the right
+   */
+  const translation = {
+    calorieCount: {
+      name: "Calories",
+      icon: iconCalories,
+      class: "red",
+      type: "kCal",
+    },
+    proteinCount: {
+      name: "Proteines",
+      icon: iconProteines,
+      class: "blue",
+      type: "g",
+    },
+    carbohydrateCount: {
+      name: "Glucides",
+      icon: iconGlucides,
+      class: "yellow",
+      type: "g",
+    },
+    lipidCount: {
+      name: "Lipides",
+      icon: iconLipides,
+      class: "pink",
+      type: "g",
+    },
   };
 
-  const translateIcons = {
-    calorieCount: iconCalories,
-    proteinCount: iconProteines,
-    carbohydrateCount: iconGlucides,
-    lipidCount: iconLipides,
-  };
-
-  const translateValues = {
-    calorieCount: "kCal",
-    proteinCount: "g",
-    carbohydrateCount: "g",
-    lipidCount: "g",
-  };
-
-  const translateClasses = {
-    calorieCount: "red",
-    proteinCount: "blue",
-    carbohydrateCount: "yellow",
-    lipidCount: "pink",
-  };
-
+  /**
+   * @description This function is used to map the data from the API to the cards on the right
+   * @returns {Array}
+   */
   const dataCards = () => {
     const data = Object.entries(props.keyData).map((entry) => {
       return {
-        name: translateCounts[entry[0]],
+        name: translation[entry[0]].name,
         value: entry[1],
-        type: translateValues[entry[0]],
-        icon: translateIcons[entry[0]],
-        class: translateClasses[entry[0]],
+        type: translation[entry[0]].type,
+        icon: translation[entry[0]].icon,
+        class: translation[entry[0]].class,
       };
     });
     return data;
