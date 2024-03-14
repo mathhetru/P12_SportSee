@@ -13,7 +13,7 @@ import {
 function DailyActivity(props) {
   /**
    * @description This function is used to map the data from the API to the bar chart
-   * @returns 
+   * @returns {Object}
    */
   const activitiesForBarChart = () => {
     const activitiesToDisplay = props.activities.map((activity, index) => ({
@@ -27,25 +27,28 @@ function DailyActivity(props) {
     return activitiesSort;
   };
 
+  /**
+   * @description return an array of kilograms
+   * @returns {Array}
+   */
   const kilograms = () => {
     return activitiesForBarChart().map((item) => item.kilogram);
   };
 
+  // min and max values for the Y axis
   const minKg = Math.min(...kilograms()) - 1;
   const maxKg = Math.max(...kilograms()) + 1;
 
+  // average ticks for the Y axis
   const averageTicks = (min, max) => {
     const mid = (min + max) / 2;
     return [min, mid, max];
   };
 
+  // ticks for the Y axis
   const yAxisTicks = averageTicks(minKg, maxKg);
 
-  /**
-   * 
-   * @param {*} param0 
-   * @returns 
-   */
+  // Custom tooltip for the bar chart
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (

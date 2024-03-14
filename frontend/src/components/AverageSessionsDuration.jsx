@@ -9,17 +9,27 @@ import {
 } from "recharts";
 
 function AverageSessionsDuration(props) {
+  /**
+   * @description sessionsForAreaChart - Array of objects with the day and the session length
+   * @returns {Array}
+   */
   const sessionsForAreaChart = () =>
     props.sessions.map((session) => ({
       day: session.day,
       sessionLength: session.sessionLength,
     }));
 
+  // Array of days
   const days = ["L", "M", "M", "J", "V", "S", "D"];
 
+  /**
+   * @description Array of days
+   * @returns {Array}
+   */
   const xAxisValue = () =>
     props.sessions.map((session) => days[session.day - 1]);
 
+  // Custom tooltip for the line chart
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
@@ -30,15 +40,7 @@ function AverageSessionsDuration(props) {
     }
   };
 
-  CustomTooltip.propTypes = {
-    active: PropTypes.bool,
-    payload: PropTypes.arrayOf(
-      PropTypes.shape({
-        value: PropTypes.number.isRequired,
-      })
-    ),
-  };
-
+  // Custom cursor for the line chart
   const CustomCursor = (props) => {
     const points = props.points[0];
     const width = props.width;
@@ -55,6 +57,15 @@ function AverageSessionsDuration(props) {
         height={height + 50}
       />
     );
+  };
+
+  CustomTooltip.propTypes = {
+    active: PropTypes.bool,
+    payload: PropTypes.arrayOf(
+      PropTypes.shape({
+        value: PropTypes.number.isRequired,
+      })
+    ),
   };
 
   CustomCursor.propTypes = {

@@ -10,6 +10,7 @@ import {
 //   getUserSessions,
 //   getUserPerformance,
 // } from "../services/APIDataServices.js";
+
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -23,7 +24,10 @@ import AverageSessionsDuration from "../components/AverageSessionsDuration";
 import CardsOnRight from "../components/CardsOnRight.jsx";
 import Score from "../components/Score";
 function Home() {
+  // Get the id from the URL
   const { id } = useParams();
+
+  // States for the user data
   const [userInfosData, setInfosUserData] = useState(null);
   const [activitiesData, setActivitiesData] = useState(null);
   const [sessionsData, setSessionsData] = useState(null);
@@ -31,7 +35,7 @@ function Home() {
 
   useEffect(() => {
     /**
-     * @description This function is used to fetch the data from the API
+     * @description This function is used to fetch the data from the API or mocks data
      */
     const fetchData = () => {
       const userData = getUserInfos(id);
@@ -65,6 +69,7 @@ function Home() {
     fetchData();
   }, [id]);
 
+  // Set the title of the page
   useEffect(() => {
     if (userInfosData) {
       document.title = `${userInfosData.userInfos.firstName} ${userInfosData.userInfos.lastName}`;

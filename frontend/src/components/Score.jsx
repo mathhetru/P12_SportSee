@@ -8,6 +8,10 @@ import {
 } from "recharts";
 
 function Score(props) {
+  /**
+   * @description Array with the score
+   * @returns {Array}
+   */
   const scoreName = () => {
     return [{ name: "score", value: props.score * 100, fill: "#e60000" }];
   };

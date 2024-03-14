@@ -51,8 +51,6 @@ If you have any trouble, check and update every package with `npm install -g npm
 
 ## Start the frontend
 
-In an other terminal
-
 ```bash
   cd ./frontend
   npm run dev

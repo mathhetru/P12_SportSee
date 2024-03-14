@@ -8,6 +8,7 @@ import {
 } from "recharts";
 
 function RadarPerformance(props) {
+  // Translation of the values
   const translateValues = {
     1: "Intensité",
     2: "Vitesse",
@@ -17,6 +18,10 @@ function RadarPerformance(props) {
     6: "Cardio",
   };
 
+  /**
+   * @description This function is used to map the data
+   * @returns {Array}
+   */
   const performanceNames = () =>
     props.data.map((data) => ({
       value: data.value,

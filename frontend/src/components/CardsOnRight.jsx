@@ -9,7 +9,8 @@ import iconProteines from "../assets/icons/sportsee-icon-proteines.svg";
 
 function CardsOnRight(props) {
   /**
-   * @description This function is used to translate the data from the API to the cards on the right
+   * @description translation - Object with the translation for the cards
+   * @returns {Object}
    */
   const translation = {
     calorieCount: {
