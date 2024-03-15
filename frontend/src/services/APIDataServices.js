@@ -1,5 +1,7 @@
+const host = "http://localhost:3001/user/";
+
 export const getUserInfos = async (userId) => {
-  const response = await fetch(`http://localhost:3001/user/${userId}`);
+  const response = await fetch(`${host}${userId}`);
   if (response.ok) {
     const userInfo = await response.json();
     return userInfo.data;
@@ -9,7 +11,7 @@ export const getUserInfos = async (userId) => {
 };
 
 export const getUserActivities = async (userId) => {
-  const response = await fetch(`http://localhost:3001/user/${userId}/activity`);
+  const response = await fetch(`${host}${userId}/activity`);
   if (response.ok) {
     const userActivity = await response.json();
     return userActivity.data;
@@ -19,9 +21,7 @@ export const getUserActivities = async (userId) => {
 };
 
 export const getUserSessions = async (userId) => {
-  const response = await fetch(
-    `http://localhost:3001/user/${userId}/average-sessions`
-  );
+  const response = await fetch(`${host}${userId}/average-sessions`);
   if (response.ok) {
     const averageSessions = await response.json();
     return averageSessions.data;
@@ -31,9 +31,7 @@ export const getUserSessions = async (userId) => {
 };
 
 export const getUserPerformance = async (userId) => {
-  const response = await fetch(
-    `http://localhost:3001/user/${userId}/performance`
-  );
+  const response = await fetch(`${host}${userId}/performance`);
   if (response.ok) {
     const performance = await response.json();
     return performance.data;

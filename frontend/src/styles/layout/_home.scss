@@ -63,6 +63,7 @@
       font-size: 0.9rem;
     }
     &-container {
+      grid-template-columns: 76% calc(24% - 1rem);
       margin-top: 1rem;
       gap: 1rem;
     }
