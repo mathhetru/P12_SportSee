@@ -60,4 +60,7 @@ You can go to http://127.0.0.1:5173 and enjoy !
 
 ## Start the Backend
 
-https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard
+```bash
+  cd ./backend
+  yarn run dev
+```
