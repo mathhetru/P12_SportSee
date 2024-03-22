@@ -1,6 +1,4 @@
 import PropTypes from "prop-types";
-import lodash from "lodash";
-
 function DashboardTitle(props) {
   /**
    * @description This function is used to check if the user has done sport
@@ -10,7 +8,12 @@ function DashboardTitle(props) {
     const sportQuantity = props.sessions.map(
       (session) => session.sessionLength
     );
-    const sum = lodash.sum(sportQuantity);
+
+    const sumInitial = 0;
+    const sum = sportQuantity.reduce((acc, curr) => {
+      return acc + curr;
+    }, sumInitial);
+
     if (sum > 175) {
       return (
         <p className="dashboard__text">
