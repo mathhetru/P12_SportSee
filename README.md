@@ -49,6 +49,13 @@ Install dependencies
 
 If you have any trouble, check and update every package with `npm install -g npm-check-updates`.
 
+## Start the Backend
+
+```bash
+  cd ./backend
+  yarn run dev
+```
+
 ## Start the frontend
 
 ```bash
@@ -58,9 +65,4 @@ If you have any trouble, check and update every package with `npm install -g npm
 
 You can go to http://127.0.0.1:5173 and enjoy !
 
-## Start the Backend
 
-```bash
-  cd ./backend
-  yarn run dev
-```
