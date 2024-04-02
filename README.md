@@ -17,7 +17,7 @@ npm
 
 ### Netlify Link
 
-https://mathhetru-p12-sportsee.netlify.app/12
+https://mathhetru-p12-sportsee.netlify.app
 
 ### Figma Link
 
